@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Interfaces</title>
+</head>
+<head>
+<h1>Interfaces detected on the server</h1>
+<ul>
+{% for key in interface_list %}
+        <li>{{key}}</li>
+{% endfor %}
+        <li>
+                <form action="{% url 'index' %}">
+                <input type="submit" value="Back to homepage" />
+                </form>
+        </li>
+</ul>
+</head>
+</html>
+

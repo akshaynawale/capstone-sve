@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Start a New Instance</title>
+</head>
+<body>
+<h1>Start a new instance</h1>
+<p>fill out the following form and simply click on the start instance button to start the instance. You should see the instance in the show instances page as running</p>
+<form action="{% url 'BindInterfaces' %}">
+	Instance Name:<br>
+	<input type="text" name="InstanceName" value="Mickey">
+	<br>
+	Instance Type<br>
+	<select name="InstanceType">
+    		<option value="Router">Router</option>
+    		<option value="DNS">DNS</option>
+    		<option value="Firewall">Firewall</option>
+  	</select><br>
+	Choose Container Image:<br>
+	<select name="ImageName">
+		{% for image_name in image_list %}
+		<option value= "{{image_name}}">{{image_name}}</option>
+		{% endfor %}
+	</select><br>
+	<select name="InterfaceName" multiple>
+                {% for interface_name in interface_list %}
+                <option value= "{{interface_name}}">{{interface_name}}</option>
+                {% endfor %}
+        </select><br>	
+	<br><br>
+
+	<input type="submit" value="Submit">
+</form> 
+</body>
+</html>

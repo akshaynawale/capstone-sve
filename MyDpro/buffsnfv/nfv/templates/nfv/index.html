@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+//body {background-color: LightSlateGray;}
+h1   {color: blue;
+      position: center;}
+p    {color: red;}
+li   {color: red;}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<title>CU Buffs NFV</title>
+<head>
+<body>
+<h1>Welcome to CU Buffs NFV Application</h1>
+<h3>Available Images</h3>
+<table>
+  <tr>
+    <th>Repository/Image Name</th>
+    <th>Tag</th>
+    <th>Image Id</th>
+    <th>Size</th>
+  </tr>
+{% for dict in image_list %}
+  <tr>
+    <td>{{dict.Repo}}</td>
+    <td>{{dict.Tag}}</td>
+    <td>{{dict.ImageId}}</td>
+    <td>{{dict.Size}}</td>
+  </tr>
+{% endfor %}
+</table>
+<h3>Running/Stopped Instnaces</h3>
+<table>
+  <tr>
+    <th>Instance Name</th>
+    <th>Time of Creation</th>
+    <th>Image used</th>
+    <th>Status</th>
+    <th>Container ID</th>
+  </tr>
+{% for dict in instance_list %}
+  <tr>
+    <td>{{dict.Name}}</td>
+    <td>{{dict.TimeCreated}}</td>
+    <td>{{dict.Image}}</td>
+    <td>{{dict.Status}}</td>
+    <td>{{dict.ContainerId}}</td>
+  </tr>
+{% endfor %}
+</table>
+
+<h3>Interfaces Detected on System</h3>
+<table>
+  <tr>
+    <th>Interface Name</th>
+    <th>IP Address</th>
+    <th>Mask</th>
+    <th>Mac Address</th>
+  </tr>
+{% for dict in interface_list %}
+  <tr>
+    <td>{{dict.Name}}</td>
+    <td>{{dict.IP}}</td>
+    <td>{{dict.Mask}}</td>
+    <td>{{dict.Mac}}</td>
+  </tr>
+{% endfor %}
+</table>
+<form action="{% url 'StartInstance' %}">
+    <input type="submit" value="Launch Instance" />
+</form>
+<body>
+</html>
